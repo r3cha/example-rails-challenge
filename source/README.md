@@ -1,24 +1,9 @@
-w# README
+# Rails Programming Task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
+#### Up application
+`docker-compose up`
+#### Run test with docker
+`docker-compose run test rspec`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-w
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then at http://localhost:3000 you will able to get an API endpoint

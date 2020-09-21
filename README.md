@@ -97,8 +97,3 @@ Create the following RSpec tests:
 1. Commit and Push your code to your new repository
 2. Send us a pull request. We will review your code and get back to you
 
-
-
-
-
-
