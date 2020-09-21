@@ -1,0 +1,42 @@
+version: "3.8"
+
+volumes:
+  postgres:
+
+services:
+  app:
+    image: rails-test:development
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    env_file: docker/development/.env
+    entrypoint: docker/entrypoint.sh
+    ports:
+      - 3001:3000
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/tmp
+      - /app/node_modules
+    command: bundle exec puma -C config/puma.rb
+
+  postgres:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  test:
+    image: rails-test:development
+    env_file: docker/test/.env
+    entrypoint: docker/entrypoint.sh
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/tmp
+      - /app/node_modules
